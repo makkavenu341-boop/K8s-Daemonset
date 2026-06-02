@@ -26,7 +26,11 @@ spec:
           images: longflew/ingress:YELLOWPAGE
           ports:
             - containerPort: 80
-          volumes:
-            - persistentVolumeClaim:
-                claimName: mypvc-blueapp
+          volumeMounts:
+            - name: mystorageaws
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: mystorageaws 
+          persistentVolumeClaim:
+              claimName: mypvc-blueapp
               
