@@ -4,33 +4,38 @@ metadata:
   name: mydpyellow
   annotations:
     kubernetes.io/change-cause: "Deploy to yellow"
+
 spec:
   minReadySeconds: 5
   replicas: 6
+
   selector:
-    matchLables:
+    matchLabels:
       app: yellow-app
+
   strategy:
     type: RollingUpdate
     rollingUpdate:
       maxSurge: 25%
       maxUnavailable: 25%
+
   template:
     metadata:
       name: myyellowpods
-      lables:
+      labels:
         app: yellow-app
+
     spec:
       containers:
         - name: myyellow-containers
-          images: longflew/ingress:YELLOWPAGE
+          image: longflew/ingress:YELLOWPAGE
           ports:
             - containerPort: 80
           volumeMounts:
             - name: mystorageaws
               mountPath: /usr/share/nginx/html
+
       volumes:
-        - name: mystorageaws 
+        - name: mystorageaws
           persistentVolumeClaim:
-              claimName: mypvc-blueapp
-              
+            claimName: mypvc-blueapp
