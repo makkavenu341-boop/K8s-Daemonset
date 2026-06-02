@@ -2,7 +2,10 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: mysc-blueapp
+
 provisioner: ebs.csi.aws.com
+
 volumeBindingMode: WaitForFirstConsumer
+
 parameters:
   type: gp3
