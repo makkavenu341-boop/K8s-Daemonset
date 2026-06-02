@@ -3,9 +3,9 @@ kind: PersistentVolumeClaim
 metadata:
   name: mypvc-blueapp
 spec:
-  accessModes: 
+  accessModes:
     - ReadWriteOnce
+  storageClassName: mysc-blueapp
   resources:
     requests:
       storage: 10Gi
-  
