@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: my-daemonset 
+spec:
+  minReadySeconds: 5
+  selector:
+    matchLabels:
+      app: blue
+  template:
+    metadata:
+      name: my-daemonset-pod
+      labels:
+        app: blue
+    spec:
+      containers:
+        - name: my-blue-container
+          image: nginx
+          ports:
+            - containerPort: 80
