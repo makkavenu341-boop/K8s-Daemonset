@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mybackup-job
+spec:
+  backoffLimit: 4
+  template:
+    metadata:
+      name: mybackup-pod
+    spec:
+      containers:
+      - name: mybackup-container
+        image: busybox
+        command:
+        - /bin/sh
+        - -c
+        - echo "Backup Job Running"; sleep 30
+      restartPolicy: Never
